@@ -1,0 +1,4 @@
+{
+    "editor.suggest.matchOnWordStartOnly": true,
+    "editor.suggest.showWords": true
+}
