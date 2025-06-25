@@ -1,8 +1,36 @@
 import './App.css';
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
+import { RiDeleteBin5Fill } from "react-icons/ri";
+import { IoCheckmarkDoneSharp } from "react-icons/io5";
 
 function App() {
   const [isCompleteScreen, setIsCompleteScreen] = useState(false)
+  const [allTodos, setTodos] = useState([]); // an array of todo items
+  const [newTitle, setNewTitle] = useState(""); // new string
+  const [newDescription, setNewDescription] = useState("");
+
+  // updating new titile and description function
+  const handleAddTodo = () => {
+    let newTodoItem = {
+      title: newTitle,
+      description: newDescription
+    };
+    
+    // adding new items into the array
+    let updateTodoArr = [...allTodos]; // making a copy of the todo array
+    updateTodoArr.push(newTodoItem);
+    setTodos(updateTodoArr);
+    localStorage.setItem('todolist', JSON.stringify(updateTodoArr))
+  };
+  // use effect when the page is rendered first time, we will be checking to see if 
+  // there's any items in local storage or not
+  useEffect (() => {
+    let savedTodo = JSON.parse(localStorage.getItem('todolist'));
+    if (savedTodo) {
+      setTodos(savedTodo);
+    }
+  }, []);
+
   return (
     <div className="App">
       <h1>Hi, another to-do list but in React T.T</h1>
@@ -11,16 +39,32 @@ function App() {
           {/* title */}
           <div className="todo-input-item">
             <label>Title</label>
-            <input type="text" placeholder="Enter task title"></input>
+            <input 
+            type="text" 
+            value={newTitle}
+            onChange={e => setNewTitle (e.target.value)}
+            placeholder="Enter task title">
+            </input>
           </div>
           {/* description */}
           <div className="todo-input-item">
             <label>Description</label>
-            <input type="text" placeholder="Enter task description"></input>
+            <input 
+            type="text"
+            value={newDescription}
+            onChange={e => setNewDescription (e.target.value)}
+            placeholder="Enter task description">
+            </input>
           </div>
           {/* add button */}
           <div className="todo-input-item">
-            <button type="button" className="primaryBtn">Add</button>
+            <button 
+            type="button" 
+            onClick={handleAddTodo}
+            className="primaryBtn"
+            >
+              Add
+            </button>
           </div>
         </div>
           {/* todo and completed button */}
@@ -32,10 +76,20 @@ function App() {
           </div>
           {/* list of todo list */}
           <div className="todo-list">
-            <div>
-              <h3>Task 1</h3>
-              <p>Description</p>
-            </div>
+            {allTodos.map((item, index)=>{
+              return(
+                <div className="todo-list-item" key={index}>
+                  <div>
+                    <h3>{item.title}</h3>
+                      <p>{item.description}</p>
+                  </div>
+                  <div>
+                    <RiDeleteBin5Fill className='icon'/>
+                    <IoCheckmarkDoneSharp className='check-icon'/>
+                  </div>
+                </div>
+              )
+            })}
           </div>
         </div>
     </div>

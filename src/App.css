@@ -66,11 +66,16 @@ h1{
 }
 
 .bnt-area{
-  display: grid;
+  /* display: grid;
   grid-template-columns: 1fr 1fr;
   width: fit-content;
-  padding: 5px;
+  padding: 5px; */
   /* background-color: red; */
+  /* width: fit-content; */
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  
 }
 
 .primaryBtn, .sndBtn{
@@ -87,3 +92,45 @@ h1{
   background-color: rgb(27, 144, 187);
 }
 
+.todo-list{
+  display: flex;
+  flex-direction: column;
+}
+
+.bnt-area{
+  margin-bottom: 10px;
+}
+
+.todo-list-item{
+  background-color: rgb(96, 197, 200);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 25px;
+  padding-bottom: 10px;
+  padding-top: 10px;
+  margin-top: 10px;
+  box-shadow: 0px 5px 7px rgb(52, 106, 109);
+  border-radius: 5px;
+}
+
+.todo-list-item h3{
+  font-size: 25px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.todo-list-item p{
+  font-size: 14px;
+  margin-top: 8px;
+}
+
+.icon, .check-icon{
+  font-size: 35px;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+.icon:hover, .check-icon:hover{
+  color: rgb(16, 67, 106);
+}
