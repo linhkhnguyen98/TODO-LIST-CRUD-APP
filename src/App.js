@@ -22,6 +22,16 @@ function App() {
     setTodos(updateTodoArr);
     localStorage.setItem('todolist', JSON.stringify(updateTodoArr))
   };
+
+  // Delete items
+  const handleDeleteTodo = (index) => {
+    let reducedTodo = [...allTodos]; // copy of all todo items
+    reducedTodo.splice(index, 1);
+    // use the copied array reducedTodo, update localStorage with new copied array
+    localStorage.setItem('todolist', JSON.stringify(reducedTodo));
+    // localStorage.removeItem(reducedTodo); // this wont delete localStorage
+    setTodos(reducedTodo);
+  };
   // use effect when the page is rendered first time, we will be checking to see if 
   // there's any items in local storage or not
   useEffect (() => {
@@ -84,7 +94,11 @@ function App() {
                       <p>{item.description}</p>
                   </div>
                   <div>
-                    <RiDeleteBin5Fill className='icon'/>
+                    <RiDeleteBin5Fill 
+                    className='icon' 
+                    onClick={() => handleDeleteTodo(index)}
+                    title="Delete?"
+                    />
                     <IoCheckmarkDoneSharp className='check-icon'/>
                   </div>
                 </div>
