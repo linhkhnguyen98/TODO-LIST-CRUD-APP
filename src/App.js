@@ -34,7 +34,7 @@ function App() {
     setTodos(reducedTodo);
   };
 
-  const handleComplete = index => {
+  const handleComplete = (index) => {
     let now = new Date ();
     let dd = now.getDate ();
     let mm = now.getMonth () + 1;
@@ -54,18 +54,29 @@ function App() {
     updatedCompletedArr.push (filteredItem);
     setCompletedTodos (updatedCompletedArr);
     handleDeleteTodo (index);
-    localStorage.setItem (
-      'completedTodos',
-      JSON.stringify (updatedCompletedArr)
-    );
+    localStorage.setItem ('completedTodos', JSON.stringify (updatedCompletedArr));
   };
+
+   const handleDeleteCompletedTodo = (index) => {
+    let reducedTodo = [...completedTodos]; // copy of all todo items
+    reducedTodo.splice(index, 1);
+    // use the copied array reducedTodo, update localStorage with new copied array
+    localStorage.setItem('completedTodos', JSON.stringify(reducedTodo));
+    // localStorage.removeItem(reducedTodo); // this wont delete localStorage
+    setCompletedTodos(reducedTodo);
+   }
 
   // use effect when the page is rendered first time, we will be checking to see if 
   // there's any items in local storage or not
   useEffect (() => {
     let savedTodo = JSON.parse(localStorage.getItem('todolist'));
+    let savedCompletedTodo = JSON.parse(localStorage.getItem('completedTodos'));
     if (savedTodo) {
       setTodos(savedTodo);
+    }
+
+    if (savedCompletedTodo){
+      setCompletedTodos(savedCompletedTodo);
     }
   }, []);
 
@@ -147,7 +158,7 @@ function App() {
                   <div>
                     <RiDeleteBin5Fill 
                     className='icon' 
-                    onClick={() => handleDeleteTodo(index)}
+                    onClick={() => handleDeleteCompletedTodo(index)}
                     title="Delete?"
                     />
                   </div>
