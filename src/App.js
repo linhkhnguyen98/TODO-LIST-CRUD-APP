@@ -82,7 +82,7 @@ function App() {
 
   return (
     <div className="App">
-      <h1>Hi, another to-do list but in React T.T</h1>
+      <h1>Hi I am the Full Stack Thingy</h1>
       <div className="todo-wrapper">
         <div className="todo-input">
           {/* title */}
