@@ -37,13 +37,10 @@ function App() {
     setTodos(reducedTodo);
   };
 
-  // Edit item (remember to go back and add it into storage)
+  // Edit item
   const handleEdit = (ind, item) => {
     setCurrentEdit(ind);
     setCurrentEditedItem(item);
-    /////////
-    /////
-    /////
   }
 
   // Update title
@@ -60,11 +57,12 @@ function App() {
     })
   }
 
-  // update todo list
+  // update todo list and also update it in local storage
   const handleUpdateTodo = () => {
     let newToDo = [...allTodos];
     newToDo[currentEdit] = currentEditedItem;
     setTodos(newToDo);
+    localStorage.setItem('todolist', JSON.stringify(newToDo));
     setCurrentEdit("");
   }
 
