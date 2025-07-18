@@ -2,6 +2,7 @@ import './App.css';
 import React, {useState, useEffect} from 'react';
 import { RiDeleteBin5Fill } from "react-icons/ri";
 import { IoCheckmarkDoneSharp } from "react-icons/io5";
+import { AiOutlineEdit } from 'react-icons/ai';
 
 function App() {
   const [isCompleteScreen, setIsCompleteScreen] = useState(false)
@@ -9,6 +10,8 @@ function App() {
   const [newTitle, setNewTitle] = useState(""); // new string
   const [newDescription, setNewDescription] = useState("");
   const [completedTodos, setCompletedTodos] = useState([]);
+  const [currentEdit, setCurrentEdit] = useState("");
+  const [currentEditedItem, setCurrentEditedItem] = useState("");
 
   // updating new titile and description function
   const handleAddTodo = () => {
@@ -33,6 +36,37 @@ function App() {
     // localStorage.removeItem(reducedTodo); // this wont delete localStorage
     setTodos(reducedTodo);
   };
+
+  // Edit item (remember to go back and add it into storage)
+  const handleEdit = (ind, item) => {
+    setCurrentEdit(ind);
+    setCurrentEditedItem(item);
+    /////////
+    /////
+    /////
+  }
+
+  // Update title
+  const handleUpdateTitle = (value) => {
+    setCurrentEditedItem((prev) => {
+      return {...prev, title:value}
+    })
+  }
+
+  // Update description
+  const handleUpdateDescription = (value) => {
+    setCurrentEditedItem((prev) => {
+      return {...prev, description:value}
+    })
+  }
+
+  // update todo list
+  const handleUpdateTodo = () => {
+    let newToDo = [...allTodos];
+    newToDo[currentEdit] = currentEditedItem;
+    setTodos(newToDo);
+    setCurrentEdit("");
+  }
 
   const handleComplete = (index) => {
     let now = new Date ();
@@ -82,7 +116,7 @@ function App() {
 
   return (
     <div className="App">
-      <h1>Hi I am the Full Stack Thingy</h1>
+      <h1>Todo List</h1>
       <div className="todo-wrapper">
         <div className="todo-input">
           {/* title */}
@@ -125,28 +159,55 @@ function App() {
           </div>
           {/* list of todo list */}
           <div className="todo-list">
-            {isCompleteScreen === false && allTodos.map((item, index)=>{
-              return(
-                <div className="todo-list-item" key={index}>
-                  <div>
-                    <h3>{item.title}</h3>
-                      <p>{item.description}</p>
-                  </div>
-                  <div>
-                    <RiDeleteBin5Fill 
-                    className='icon' 
-                    onClick={() => handleDeleteTodo(index)}
-                    title="Delete?"
-                    />
-                    <IoCheckmarkDoneSharp 
-                    className='check-icon' 
-                    onClick={() => handleComplete(index)}
-                    title="Complete?"
-                    />
-                  </div>
-                </div>
-              )
-            })}
+            {isCompleteScreen === false && 
+              allTodos.map((item, index) => {
+                // edit button and functionality
+                if(currentEdit===index){
+                  return(
+                    <div className='edit_wrapper' key={index}>
+                    <input placeholder='Updated Title'
+                    onChange={(e) => handleUpdateTitle(e.target.value)}
+                    value={currentEditedItem.title} />
+                    <textarea placeholder='Update Title'
+                    rows={4}
+                    onChange={(e)=>handleUpdateDescription(e.target.value)}
+                    value={currentEditedItem.description} />
+                    <button 
+                      type="button" 
+                      onClick={handleUpdateTodo} 
+                      className="primaryBtn"
+                      >
+                      Update
+                    </button>
+                    </div>
+                  )
+                }else{
+
+                  return(
+                    <div className="todo-list-item" key={index}>
+                      <div>
+                        <h3>{item.title}</h3>
+                          <p>{item.description}</p>
+                      </div>
+                      <div>
+                        <RiDeleteBin5Fill 
+                        className='icon' 
+                        onClick={() => handleDeleteTodo(index)}
+                        title="Delete?"
+                        />
+                        <IoCheckmarkDoneSharp 
+                        className='check-icon' 
+                        onClick={() => handleComplete(index)}
+                        title="Complete?"
+                        />
+                        <AiOutlineEdit  className="check-icon"
+                          onClick={() => handleEdit (index,item)}
+                          title="Edit?" />                        
+                      </div>
+                    </div>
+                  );
+                }
+              })}
             {isCompleteScreen === true && completedTodos.map((item, index)=>{
               return(
                 <div className="todo-list-item" key={index}>
