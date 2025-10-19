@@ -1,70 +1,54 @@
-# Getting Started with Create React App
+#  **Smart To-Do List**
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A clean, interactive productivity app built with React to manage daily tasks efficiently.
 
-## Available Scripts
+#  **Overview**
 
-In the project directory, you can run:
+The Smart To-Do List is a modern React web application that allows users to create, edit, complete, and delete tasks while persisting data in the browser using localStorage.
+This project demonstrates my ability to design, build, and deploy full-featured front-end applications using React hooks, component-based architecture, and state management.
 
-### `npm start`
+#  **Features**
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+✅ Add new tasks with titles and descriptions
+✏️ Edit existing tasks directly in the interface
+🗑️ Delete tasks instantly
+✅ Mark tasks as complete and view them in a separate section
+💾 Data automatically saved using localStorage
+📱 Responsive layout and clean, minimalist UI
+⚡ Real-time state updates using React Hooks (useState, useEffect)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+#  **Technologies Used**
 
-### `npm test`
+React.js – front-end framework
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+JavaScript (ES6+) – core programming language
 
-### `npm run build`
+HTML5 / CSS3 – structure and styling
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+React Icons – visual elements
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+LocalStorage API – persistent data management
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+#  **How It Works**
 
-### `npm run eject`
+Add a Task – Type in a title and description, then click “Add.”
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Edit Tasks – Click the ✏️ icon to modify the task inline.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Complete Tasks – Mark tasks as done with the ✔️ icon.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Delete Tasks – Remove unwanted tasks permanently.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Persistent Storage – Refreshing or closing the tab won’t erase your data.
 
-## Learn More
+#  **What I Learned**
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Through this project, I strengthened my:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Understanding of React state management and hooks lifecycle
 
-### Code Splitting
+Ability to handle user interactions and dynamic UI rendering
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Experience with data persistence using browser APIs
 
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Skills in writing clean, modular, and maintainable front-end code
