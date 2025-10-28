@@ -9,13 +9,13 @@ This project demonstrates my ability to design, build, and deploy full-featured 
 
 #  **Features**
 
-✅ Add new tasks with titles and descriptions
-✏️ Edit existing tasks directly in the interface
-🗑️ Delete tasks instantly
-✅ Mark tasks as complete and view them in a separate section
-💾 Data automatically saved using localStorage
-📱 Responsive layout and clean, minimalist UI
-⚡ Real-time state updates using React Hooks (useState, useEffect)
+- Add new tasks with titles and descriptions
+- Edit existing tasks directly in the interface
+- Delete tasks instantly
+- Mark tasks as complete and view them in a separate section
+- Data automatically saved using localStorage
+- Responsive layout and clean, minimalist UI
+- Real-time state updates using React Hooks (useState, useEffect)
 
 #  **Technologies Used**
 
